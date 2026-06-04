@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+/* ── Design Tokens ─────────────────────────────────── */
+:root {
+  --color-bg: #0D0F12;
+  --color-bg-elevated: #13161B;
+  --color-bg-card: #181B22;
+  --color-accent: #00FF66;
+  --color-accent-dim: rgba(0, 255, 102, 0.15);
+  --color-accent-glow: rgba(0, 255, 102, 0.4);
+  --color-text: #FFFFFF;
+  --color-text-secondary: #8A8F9A;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-accent: rgba(0, 255, 102, 0.3);
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+}
+
+/* ── Tailwind v4 Theme ─────────────────────────────── */
+@theme {
+  --color-bg: #0D0F12;
+  --color-bg-elevated: #13161B;
+  --color-bg-card: #181B22;
+  --color-accent: #00FF66;
+  --color-accent-dim: rgba(0, 255, 102, 0.15);
+  --color-accent-glow: rgba(0, 255, 102, 0.4);
+  --color-text: #FFFFFF;
+  --color-text-secondary: #8A8F9A;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-accent: rgba(0, 255, 102, 0.3);
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+}
+
+/* ── Global Reset ──────────────────────────────────── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ── Blueprint Grid Background ─────────────────────── */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0, 255, 102, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 102, 0.015) 1px, transparent 1px);
+  background-size: 300px 300px;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Selection ─────────────────────────────────────── */
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+/* ── Scrollbar ─────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 102, 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* ── Utility Classes ───────────────────────────────── */
+.glow-accent {
+  box-shadow:
+    0 0 15px rgba(0, 255, 102, 0.15),
+    0 0 60px rgba(0, 255, 102, 0.05);
+}
+
+.glow-accent-strong {
+  box-shadow:
+    0 0 20px rgba(0, 255, 102, 0.3),
+    0 0 80px rgba(0, 255, 102, 0.1);
+}
+
+.text-glow {
+  text-shadow: 0 0 30px rgba(0, 255, 102, 0.4);
+}
+
+.border-glow {
+  border-color: rgba(0, 255, 102, 0.3);
+  box-shadow: inset 0 0 20px rgba(0, 255, 102, 0.03);
+}
+
+.glass {
+  background: rgba(13, 15, 18, 0.7);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  border: 1px solid var(--color-border);
+}
+
+.glass-strong {
+  background: rgba(13, 15, 18, 0.85);
+  backdrop-filter: blur(40px) saturate(1.4);
+  -webkit-backdrop-filter: blur(40px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ── Coordinate Markings ───────────────────────────── */
+.coord-mark {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--color-text-secondary);
+  opacity: 0.4;
+  text-transform: uppercase;
+}
+
+/* ── Section Dividers ──────────────────────────────── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-border) 20%,
+    rgba(0, 255, 102, 0.15) 50%,
+    var(--color-border) 80%,
+    transparent 100%
+  );
+}
